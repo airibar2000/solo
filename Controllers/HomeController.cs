@@ -12,9 +12,5 @@ namespace solo.Controllers
             {
             return View();
             }
-
-        
-
-       
         }
     }

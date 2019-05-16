@@ -69,8 +69,8 @@ C:\solo\solo\solo\bin\System.Web.WebPages.Razor.xml
 C:\solo\solo\solo\bin\Newtonsoft.Json.xml
 C:\solo\solo\solo\bin\Antlr3.Runtime.pdb
 C:\solo\solo\solo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache
 C:\solo\solo\solo\obj\Debug\solo.csproj.CoreCompileInputs.cache
 C:\solo\solo\solo\obj\Debug\solo.csproj.CopyComplete
 C:\solo\solo\solo\obj\Debug\solo.dll
 C:\solo\solo\solo\obj\Debug\solo.pdb
+C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache
