@@ -8,7 +8,8 @@ using System.Web.Mvc;
 
 namespace solo.Controllers
 {
-    public class MoviesController : Controller
+    public class 
+        MoviesController : Controller
     {
        [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2})}")]
        public ActionResult ByReleaseDate(int year,int month)
@@ -19,7 +20,7 @@ namespace solo.Controllers
         // GET: Movies/Random
         public ActionResult Random()
         {
-            var movie = new Movies() { Name = "Sherk" };
+            var movie = new Movie() { Name = "Sherk" };
             var customers = new List<Customer>()
                 { new Customer {Name ="Customer 1"},
                   new Customer {Name ="Customer 2"}
