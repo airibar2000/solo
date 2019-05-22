@@ -3,20 +3,34 @@
 <h1>Customer View</h1>
 
 @{
-
-    foreach (var element in Model)
+    if (!Model.Any())
         {
+        <p> we dont have any customer yet.</p>
+        }
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Membership Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var element in Model)
+                {
+            <tr>
+                <td> @Html.ActionLink(@element.Name, "Detail", new { id = element.Id }, null)</td>
+                 
+                <td>@element.MembershipType.Name</td>
 
-    <li>
-        @*@Url.Action(@element.Name, "Detail", new { id = element.Id, name = element.Name });*@
-        @*@Html.ActionLink(@element.Name, "Detail/" + @element.Id,new { name = element.Name });*@
-        @Html.ActionLink(@element.Name, "Detail",new { id = element.Id },null);
+            </tr>
+                
+                
+                }
+        </tbody>
 
+    </table>
 
-    </li>
-
-
-            }
+   
 
 
         }

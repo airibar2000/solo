@@ -83,3 +83,7 @@ C:\solo\solo\solo\obj\Debug\solo.Migrations.AddIsSubscribedToCustomer.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.AddMembershipType.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.PopulateMembershipTypes.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.ApplyAnnotationsToCustomerName.resources
+C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache
+C:\solo\solo\solo\obj\Debug\solo.Migrations.AddNametoMembershipType.resources
+C:\solo\solo\solo\obj\Debug\solo.Migrations.UpdateMembershipType.resources
+C:\solo\solo\solo\obj\Debug\solo.Migrations.UpdateMembershipType1.resources
