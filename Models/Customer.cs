@@ -13,9 +13,15 @@ namespace solo.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
+        [Display(Name = "Date of Bith")]
         public DateTime? Birthdate { get; set; }
+
         public bool IsSubscribedToNewsLetter { get; set; }
+
+        [Display(Name="Memebership Type")]
         public MembershipType MembershipType { get; set; }
+
         public byte MembershipTypeId { get; set; }
         }
     }

@@ -78,6 +78,12 @@ namespace solo.Controllers
             return View(MovieDetail);
             }
 
+        [Route("movies/new")]
+        public ActionResult New()
+            {
+
+            return View();
+            }
 
         }
 }

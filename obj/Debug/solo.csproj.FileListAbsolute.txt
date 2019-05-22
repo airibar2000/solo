@@ -90,3 +90,4 @@ C:\solo\solo\solo\obj\Debug\solo.Migrations.AddBirthDateNulleable.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.AddGenreTableandmodifymovie.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.AddGenreTableandmodifymovie1.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.populateGenres.resources
+C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache

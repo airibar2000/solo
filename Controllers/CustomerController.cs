@@ -44,5 +44,18 @@ namespace solo.Controllers
             var customer = _myDb.Customers.Include(c => c.MembershipType).ToList();
             return View(customer);
             }
+
+        [Route("Customer/New")]
+        public ActionResult NewCustomer() {
+
+            var membershiptype = _myDb.MembershipTypes.ToList();
+            var newCustomer = new CustomerExtras
+                {
+                MembershipTypes = membershiptype
+                };
+            return View(newCustomer);
+            }
+
+            
         }
 }
