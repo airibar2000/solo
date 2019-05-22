@@ -1,5 +1,6 @@
 ﻿using solo.Models;
 using solo.ViewModels;
+using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,30 +12,38 @@ namespace solo.Controllers
     public class 
         MoviesController : Controller
     {
-       [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2})}")]
+        // conect to database
+        // Connect the controller with database
+        private readonly MyDBContext _myDb;
+        public MoviesController()
+            {
+            _myDb = new MyDBContext();
+
+            }
+        protected override void Dispose(bool disposing)
+            {
+            _myDb.Dispose();
+            }
+        // end conect controler with database
+        // end connect  to database
+
+        [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2})}")]
        public ActionResult ByReleaseDate(int year,int month)
             {
             return Content("Year: " + year + " Month:" + month);
             }
 
         // GET: Movies/Random
-        public ActionResult Random()
-        {
-            var movie = new Movie() { Name = "Sherk" };
-            var customers = new List<Customer>()
-                { new Customer {Name ="Customer 1"},
-                  new Customer {Name ="Customer 2"}
-                };
-            var viewModel = new RandomMovieViewModel
-                {
-                Movie = movie,
-                Customers = customers
-                };
-
-
-
-            return View(viewModel);
+        [Route("movies")]
+        public ActionResult Index()
+            {
+            var movies = _myDb.Movies.Include(c => c.Genres).ToList();
+            return View(movies);
         }
+             
+        
+
+
         public ActionResult Edit(int id)
             {
             return Content("id: " + id);
@@ -55,5 +64,20 @@ namespace solo.Controllers
             return Content(String.Format("Page Index: {0} and Sort by {1}",pageIndex,sortBy));
 
             }
-    }
+
+        [Route("Movies/Detail/{id}")]
+        public ActionResult Detail(int id)
+            {
+           
+            var MovieDetail = _myDb.Movies.Include(c => c.Genres).SingleOrDefault(c => c.Id == id);
+            if (MovieDetail == null)
+                {
+                return HttpNotFound();
+                }
+
+            return View(MovieDetail);
+            }
+
+
+        }
 }

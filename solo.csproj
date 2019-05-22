@@ -168,8 +168,21 @@
     <Compile Include="Migrations\201905221732570_AddBirthDateNulleable.Designer.cs">
       <DependentUpon>201905221732570_AddBirthDateNulleable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905221903307_AddGenreTableandmodifymovie.cs" />
+    <Compile Include="Migrations\201905221903307_AddGenreTableandmodifymovie.Designer.cs">
+      <DependentUpon>201905221903307_AddGenreTableandmodifymovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905221916452_AddGenreTableandmodifymovie1.cs" />
+    <Compile Include="Migrations\201905221916452_AddGenreTableandmodifymovie1.Designer.cs">
+      <DependentUpon>201905221916452_AddGenreTableandmodifymovie1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905221918438_populateGenres.cs" />
+    <Compile Include="Migrations\201905221918438_populateGenres.Designer.cs">
+      <DependentUpon>201905221918438_populateGenres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MyDBContext.cs" />
@@ -213,10 +226,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Movies\Random.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Shared\_navBar.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Detail.cshtml" />
+    <Content Include="Views\Movies\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -261,6 +275,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905221732570_AddBirthDateNulleable.resx">
       <DependentUpon>201905221732570_AddBirthDateNulleable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905221903307_AddGenreTableandmodifymovie.resx">
+      <DependentUpon>201905221903307_AddGenreTableandmodifymovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905221916452_AddGenreTableandmodifymovie1.resx">
+      <DependentUpon>201905221916452_AddGenreTableandmodifymovie1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905221918438_populateGenres.resx">
+      <DependentUpon>201905221918438_populateGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

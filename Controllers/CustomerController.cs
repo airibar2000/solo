@@ -11,6 +11,7 @@ namespace solo.Controllers
 {
     public class CustomerController : Controller
     {
+        // Connect the controller with database
         private readonly MyDBContext _myDb;
         public CustomerController()
             {
@@ -21,6 +22,7 @@ namespace solo.Controllers
             {
             _myDb.Dispose();
             }
+        // end conect controler with database 
         // GET: Customer
        
         [Route("Customer/Detail/{id}")]

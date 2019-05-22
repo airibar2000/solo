@@ -1,0 +1,31 @@
+﻿@model IEnumerable<solo.Models.Movie>
+<h1>Movies View</h1>
+
+@{
+    if (!Model.Any())
+        {
+        <p> we dont have any Movies yet.</p>
+            }
+        }
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Moviesr</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var element in Model)
+                {
+                <tr>
+                    <td>@Html.ActionLink(@element.Name, "Detail", new { id = element.Id }, null)</td>
+
+                    <td>@element.Genres.GenreName</td>
+
+                </tr>
+
+
+                }
+        </tbody>
+
+    </table>

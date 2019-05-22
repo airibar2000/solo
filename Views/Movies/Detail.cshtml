@@ -1,0 +1,12 @@
+﻿@model solo.Models.Movie
+    
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.Name</h1>
+<li>Genre: @Model.Genres.GenreName</li>
+<li>Relase Date: @Model.ReleaseDate.ToLongDateString()</li>
+<li>Date Added: @Model.DateAdded.ToLongDateString()</li>
+<li>Number in Stock: @Model.NumberInStock</li>
