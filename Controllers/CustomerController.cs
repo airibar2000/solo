@@ -27,7 +27,8 @@ namespace solo.Controllers
         public ActionResult Detail(int id) {
             //public ViewDetail CustomerDetail = new ViewDetail();
 
-            var CustomerDetail = _myDb.Customers.SingleOrDefault(c => c.Id == id);
+            //var CustomerDetail = _myDb.Customers.SingleOrDefault(c => c.Id == id);
+            var CustomerDetail = _myDb.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
             if (CustomerDetail == null)
                 {
                 return HttpNotFound();

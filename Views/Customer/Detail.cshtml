@@ -1,6 +1,11 @@
 ﻿@model solo.Models.Customer
 <h1>Detail</h1>
 <h1>@Model.Name</h1>
-
+<h3>Memebership Type: @Model.MembershipType.Name</h3>
+@{ if (Model.Birthdate != null)
+        {
+<h3>Date of Birth: @string.Format("{0:D}",@Model.Birthdate)</h3>
+        }
+  }
 
 
