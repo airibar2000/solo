@@ -73,10 +73,13 @@ C:\solo\solo\solo\obj\Debug\solo.csproj.CoreCompileInputs.cache
 C:\solo\solo\solo\obj\Debug\solo.csproj.CopyComplete
 C:\solo\solo\solo\obj\Debug\solo.dll
 C:\solo\solo\solo\obj\Debug\solo.pdb
-C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache
 C:\solo\solo\solo\bin\EntityFramework.dll
 C:\solo\solo\solo\bin\EntityFramework.SqlServer.dll
 C:\solo\solo\solo\bin\EntityFramework.xml
 C:\solo\solo\solo\bin\EntityFramework.SqlServer.xml
 C:\solo\solo\solo\obj\Debug\solo.Migrations.InitialModel.resources
 C:\solo\solo\solo\obj\Debug\solo.csproj.GenerateResource.cache
+C:\solo\solo\solo\obj\Debug\solo.Migrations.AddIsSubscribedToCustomer.resources
+C:\solo\solo\solo\obj\Debug\solo.Migrations.AddMembershipType.resources
+C:\solo\solo\solo\obj\Debug\solo.Migrations.PopulateMembershipTypes.resources
+C:\solo\solo\solo\obj\Debug\solo.Migrations.ApplyAnnotationsToCustomerName.resources

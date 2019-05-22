@@ -1,19 +1,19 @@
 ﻿
-@using solo.ViewModels
-@model solo.ViewModels.ListViewModel
+@model IEnumerable<solo.Models.Customer>
 <h1>Customer View</h1>
 
 @{
 
-    foreach (var element in Model.Listofcustomers)
+    foreach (var element in Model)
         {
 
-        <li>
-            @*@Url.Action(@element.Name, "Detail", new { id = element.Id, name = element.Name });*@
-            @Html.ActionLink(@element.Name, "Detail/" + @element.Id);
+    <li>
+        @*@Url.Action(@element.Name, "Detail", new { id = element.Id, name = element.Name });*@
+        @*@Html.ActionLink(@element.Name, "Detail/" + @element.Id,new { name = element.Name });*@
+        @Html.ActionLink(@element.Name, "Detail",new { id = element.Id },null);
 
 
-        </li>
+    </li>
 
 
             }

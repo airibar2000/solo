@@ -136,8 +136,25 @@
     <Compile Include="Migrations\201905211808441_InitialModel.Designer.cs">
       <DependentUpon>201905211808441_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211851243_AddIsSubscribedToCustomer.cs" />
+    <Compile Include="Migrations\201905211851243_AddIsSubscribedToCustomer.Designer.cs">
+      <DependentUpon>201905211851243_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211858459_AddMembershipType.cs" />
+    <Compile Include="Migrations\201905211858459_AddMembershipType.Designer.cs">
+      <DependentUpon>201905211858459_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211901171_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\201905211901171_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>201905211901171_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211919474_ApplyAnnotationsToCustomerName.cs" />
+    <Compile Include="Migrations\201905211919474_ApplyAnnotationsToCustomerName.Designer.cs">
+      <DependentUpon>201905211919474_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MyDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,6 +221,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905211808441_InitialModel.resx">
       <DependentUpon>201905211808441_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211851243_AddIsSubscribedToCustomer.resx">
+      <DependentUpon>201905211851243_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211858459_AddMembershipType.resx">
+      <DependentUpon>201905211858459_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211901171_PopulateMembershipTypes.resx">
+      <DependentUpon>201905211901171_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211919474_ApplyAnnotationsToCustomerName.resx">
+      <DependentUpon>201905211919474_ApplyAnnotationsToCustomerName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

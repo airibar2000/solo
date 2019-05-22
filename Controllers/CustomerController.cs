@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using solo.ViewModels;
 using solo.Models;
 
@@ -10,47 +11,35 @@ namespace solo.Controllers
 {
     public class CustomerController : Controller
     {
-        // GET: Customer
-        [Route("listofCustomer")]
-        public ActionResult Index()
-        {
-            var listofcustomer = new ListViewModel();
-            List<Customer> ListofCustomers = new List<Customer>()
-                {
-                new Customer
-                    {
-                    Id = 1,
-                    Name = "Customer 1"
-                    },
-                new Customer
-                    {
-                    Id = 2,
-                    Name = "Customer 2"
-                    },
-                new Customer
-                    {
-                    Id = 3,
-                    Name = "Customer 3"
-                    }
-                };
+        private readonly MyDBContext _myDb;
+        public CustomerController()
+            {
+            _myDb = new MyDBContext();
 
-            listofcustomer.Listofcustomers = ListofCustomers;
-            ViewBag.LT = listofcustomer;
-            return View(listofcustomer);
-            //return Content("llege");
-        }
+            }
+        protected override void Dispose(bool disposing)
+            {
+            _myDb.Dispose();
+            }
+        // GET: Customer
+       
         [Route("Customer/Detail/{id}")]
-        public ActionResult Detail(Customer x) {
+        public ActionResult Detail(int id) {
             //public ViewDetail CustomerDetail = new ViewDetail();
 
-
-            var CustomerDetail = new ViewDetail() {
-                ID = x.Id,
-                NAME = x.Name
-                };
+            var CustomerDetail = _myDb.Customers.SingleOrDefault(c => c.Id == id);
+            if (CustomerDetail == null)
+                {
+                return HttpNotFound();
+                }
             
-            //return Content("ID = "+id);
             return View(CustomerDetail);
+            }
+        [Route("listofCustomer")]
+        public ViewResult Index()
+            {
+            var customer = _myDb.Customers.Include(c => c.MembershipType).ToList();
+            return View(customer);
             }
         }
 }
