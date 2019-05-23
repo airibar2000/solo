@@ -9,8 +9,13 @@
         }
     <table class="table table-bordered table-hover">
         <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("New Movie", "NewMovie", "Movies", new { }, new { @class = "btn btn-primary" })
+            </th>
+        </tr>
             <tr>
-                <th>Moviesr</th>
+                <th>Movies</th>
                 <th>Genre</th>
             </tr>
         </thead>

@@ -46,7 +46,7 @@ namespace solo.Controllers
             }
 
         [Route("Customer/NewCustomer/{id}")]
-        public ActionResult NewCustomer(int Id) {
+        public ActionResult NewCustomer() {
 
             var membershiptype = _myDb.MembershipTypes.ToList();
             var newCustomer = new CustomerExtras
@@ -56,11 +56,24 @@ namespace solo.Controllers
             return View(newCustomer);
             }
             [HttpPost]
-            public ActionResult Create(Customer customer)
+            public ActionResult Save(Customer customer)
             {
-            _myDb.Customers.Add(customer);
+            if (customer.Id == 0)
+                {
+                _myDb.Customers.Add(customer);
+               
+                }else
+                {
+                var customerInDb = _myDb.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customer.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+
+
+                }
             _myDb.SaveChanges();
-           return RedirectToAction("Index", "Customer");
+            return RedirectToAction("Index", "Customer");
             }
         [Route("Customer/Edit/{id}")]
         public ActionResult Edit(int id)

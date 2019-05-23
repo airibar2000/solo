@@ -15,6 +15,7 @@ namespace solo.Models
         public DateTime DateAdded { get; set; }
         public short NumberInStock { get; set; }
         public Genres Genres { get; set; }
+        [Display(Name = "Genre Type")]
         public byte GenreId { get; set; }
         }
     ////movies/random
