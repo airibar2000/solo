@@ -11,7 +11,9 @@ namespace solo.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+
         public DateTime ReleaseDate { get; set; }
+
         public DateTime DateAdded { get; set; }
         public short NumberInStock { get; set; }
         public Genres Genres { get; set; }

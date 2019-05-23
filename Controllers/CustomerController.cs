@@ -58,6 +58,15 @@ namespace solo.Controllers
             [HttpPost]
             public ActionResult Save(Customer customer)
             {
+            if (!ModelState.IsValid)
+                {
+                var viewModel = new CustomerExtras
+                    {
+                    Customer = customer,
+                    MembershipTypes = _myDb.MembershipTypes.ToList()
+                    };
+                return View("NewCustomer",viewModel);
+                }
             if (customer.Id == 0)
                 {
                 _myDb.Customers.Add(customer);

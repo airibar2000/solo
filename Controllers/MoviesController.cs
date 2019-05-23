@@ -101,6 +101,9 @@ namespace solo.Controllers
             {
             if (movie.Id == 0)
                 {
+                var tempDate = movie.ReleaseDate.ToShortDateString();
+                movie.ReleaseDate = Convert.ToDateTime(tempDate);
+                movie.DateAdded = DateTime.Today;
                 _myDb.Movies.Add(movie);
                 }else
                 {
