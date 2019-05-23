@@ -55,7 +55,12 @@ namespace solo.Controllers
                 };
             return View(newCustomer);
             }
-
-            
+            [HttpPost]
+            public ActionResult Create(Customer customer)
+            {
+            _myDb.Customers.Add(customer);
+            _myDb.SaveChanges();
+           return RedirectToAction("Index", "Customer");
+            }
         }
 }

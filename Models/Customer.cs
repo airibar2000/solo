@@ -22,6 +22,7 @@ namespace solo.Models
         [Display(Name="Memebership Type")]
         public MembershipType MembershipType { get; set; }
 
+        [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
         }
     }
