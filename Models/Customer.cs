@@ -14,15 +14,20 @@ namespace solo.Models
         [StringLength(255)]
         public string Name { get; set; }
 
-        [Display(Name = "Date of Bith")]
+        
+        [Display(Name = "Date of Birth")]
+        [Min18YearsIfaMember]
         public DateTime? Birthdate { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
 
+        
         [Display(Name="Memebership Type")]
         public MembershipType MembershipType { get; set; }
 
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
         }
+
+
     }

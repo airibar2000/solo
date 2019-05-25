@@ -15,6 +15,11 @@ namespace solo.Models
 
         [Display(Name="Membership Type")]
         public string Name { get; set; }
+      
+        // Declaring Constants
+
+        public static readonly byte Unknown = 0;
+        public static readonly byte PayAsYouGo = 1;
 
         }
     }

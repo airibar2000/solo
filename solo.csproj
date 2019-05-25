@@ -180,12 +180,30 @@
     <Compile Include="Migrations\201905221918438_populateGenres.Designer.cs">
       <DependentUpon>201905221918438_populateGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905241644215_actualizeall.cs" />
+    <Compile Include="Migrations\201905241644215_actualizeall.Designer.cs">
+      <DependentUpon>201905241644215_actualizeall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905241710157_actualizeall1.cs" />
+    <Compile Include="Migrations\201905241710157_actualizeall1.Designer.cs">
+      <DependentUpon>201905241710157_actualizeall1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905241804415_actualizeall2.cs" />
+    <Compile Include="Migrations\201905241804415_actualizeall2.Designer.cs">
+      <DependentUpon>201905241804415_actualizeall2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905241900026_actualizeall3.cs" />
+    <Compile Include="Migrations\201905241900026_actualizeall3.Designer.cs">
+      <DependentUpon>201905241900026_actualizeall3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfaMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MyDBContext.cs" />
+    <Compile Include="Models\ValidationMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CustomerExtras.cs" />
     <Compile Include="ViewModels\ListViewModel.cs" />
@@ -288,6 +306,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905221918438_populateGenres.resx">
       <DependentUpon>201905221918438_populateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241644215_actualizeall.resx">
+      <DependentUpon>201905241644215_actualizeall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241710157_actualizeall1.resx">
+      <DependentUpon>201905241710157_actualizeall1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241804415_actualizeall2.resx">
+      <DependentUpon>201905241804415_actualizeall2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241900026_actualizeall3.resx">
+      <DependentUpon>201905241900026_actualizeall3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

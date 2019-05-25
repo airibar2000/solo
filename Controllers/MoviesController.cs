@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace solo.Controllers
-{
+    {
     public class
         MoviesController : Controller
         {
@@ -62,7 +62,6 @@ namespace solo.Controllers
                 }
 
             return Content(String.Format("Page Index: {0} and Sort by {1}", pageIndex, sortBy));
-
             }
 
         [Route("Movies/Detail/{id}")]
@@ -74,8 +73,8 @@ namespace solo.Controllers
                 {
                 Movie = MovieDetail,
                 Genres = _myDb.Genres.ToList()
-                
-                
+
+
                 };
             if (MovieDetail == null)
                 {
@@ -91,31 +90,61 @@ namespace solo.Controllers
             var listOfgenre = _myDb.Genres.ToList();
             var Movieall = new MoviesWithGener
                 {
-                Genres = listOfgenre.ToList()
+                Movie = new Movie(),
+                Genres = listOfgenre
                 };
             ViewBag.MovieAction = "New Movie";
             return View(Movieall);
-            
+
             }
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
             {
+            var genres = _myDb.Genres.ToList();
+            // verfy validatin on server side and if eror return to view with fields
+            if (!ModelState.IsValid)
+                {
+                
+                var viewModel = new MoviesWithGener
+                    {
+                    Movie = movie,
+                    Genres = genres
+                    };
+                return View("NewMovie", viewModel);
+                };
+
+            //
             if (movie.Id == 0)
                 {
                 var tempDate = movie.ReleaseDate.ToShortDateString();
-                movie.ReleaseDate = Convert.ToDateTime(tempDate);
+                var movieToInsert = new Movie();
+
+                //movie.ReleaseDate = Convert.ToDateTime(tempDate);
                 movie.DateAdded = DateTime.Today;
+
                 _myDb.Movies.Add(movie);
-                }else
+                }
+            else
                 {
                 var movieToUpdate = _myDb.Movies.Single(m => m.Id == movie.Id);
                 movieToUpdate.Name = movie.Name;
                 movieToUpdate.ReleaseDate = movie.ReleaseDate;
                 movieToUpdate.NumberInStock = movie.NumberInStock;
-
+                movieToUpdate.GenreId = movie.GenreId;
+                
                 }
             _myDb.SaveChanges();
-           return RedirectToAction("index","movies");
+            return RedirectToAction("index", "movies");
             }
         }
+    }
     
-}
+
+
+
+
+        
+        
+    
+    
+
