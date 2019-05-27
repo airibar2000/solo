@@ -71,7 +71,13 @@ namespace solo.Controllers
             var MovieDetail = _myDb.Movies.Include(c => c.Genres).SingleOrDefault(c => c.Id == id);
             var MovieDetailWithGenre = new MoviesWithGener
                 {
-                Movie = MovieDetail,
+                Id = MovieDetail.Id,
+                Name = MovieDetail.Name,
+                ReleaseDate = MovieDetail.ReleaseDate,
+                GenreId = MovieDetail.GenreId,
+                NumberInStock = MovieDetail.NumberInStock,
+
+
                 Genres = _myDb.Genres.ToList()
 
 
@@ -85,13 +91,12 @@ namespace solo.Controllers
             }
 
         [Route("Movies/newmovie")]
-        public ActionResult NewMovie()
+        public ActionResult NewMovie(Movie movie)
             {
             var listOfgenre = _myDb.Genres.ToList();
-            var Movieall = new MoviesWithGener
+            var Movieall = new MoviesWithGener(movie)
                 {
-                Movie = new Movie(),
-                Genres = listOfgenre
+                    Genres = listOfgenre
                 };
             ViewBag.MovieAction = "New Movie";
             return View(Movieall);
@@ -104,11 +109,11 @@ namespace solo.Controllers
             // verfy validatin on server side and if eror return to view with fields
             if (!ModelState.IsValid)
                 {
-                
-                var viewModel = new MoviesWithGener
+
+                var viewModel = new MoviesWithGener(movie)
                     {
-                    Movie = movie,
-                    Genres = genres
+                    
+                    Genres = genres.ToList()
                     };
                 return View("NewMovie", viewModel);
                 };
@@ -117,7 +122,7 @@ namespace solo.Controllers
             if (movie.Id == 0)
                 {
                 var tempDate = movie.ReleaseDate.ToShortDateString();
-                var movieToInsert = new Movie();
+                //var movieToInsert = new Movie();
 
                 //movie.ReleaseDate = Convert.ToDateTime(tempDate);
                 movie.DateAdded = DateTime.Today;
@@ -131,6 +136,7 @@ namespace solo.Controllers
                 movieToUpdate.ReleaseDate = movie.ReleaseDate;
                 movieToUpdate.NumberInStock = movie.NumberInStock;
                 movieToUpdate.GenreId = movie.GenreId;
+                //movieToUpdate.Genres = movie.Genres.GenreName;
                 
                 }
             _myDb.SaveChanges();

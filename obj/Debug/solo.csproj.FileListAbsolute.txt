@@ -94,3 +94,4 @@ C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall1.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall2.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall3.resources
+C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache
