@@ -49,6 +49,7 @@ namespace solo.Controllers.Api
             }
 
         // PUt API/Customers/1
+        [HttpPut]
         public void UpdateCustomer(int id,Customer customer)
             {
             if (!ModelState.IsValid)
@@ -62,6 +63,21 @@ namespace solo.Controllers.Api
             customerInDb.Birthdate = customer.Birthdate;
             customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
             customerInDb.MembershipTypeId = customer.MembershipTypeId;
+            _dbContext.SaveChanges();
+
+            }
+        // Delete /Api/customers/1
+        [HttpDelete]
+        public void DeleteCustomer(int id)
+            {
+            if (!ModelState.IsValid)
+                {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                }
+            var customerInDb = _dbContext.Customers.SingleOrDefault(c => c.Id == id);
+            if (customerInDb == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            _dbContext.Customers.Remove(customerInDb);
             _dbContext.SaveChanges();
 
             }
