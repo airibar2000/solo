@@ -6,63 +6,65 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data;
+using solo.Dtos;
+using AutoMapper;
 
 namespace solo.Controllers.Api
 {
     public class CustomersController : ApiController
     {
-        private MyDBContext _dbContext;
+        private readonly MyDBContext _dbContext;
         public CustomersController()
             {
             _dbContext = new MyDBContext();
             }
         // GET Api/customers
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers()
             {
-            return _dbContext.Customers.ToList();
+            return _dbContext.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
             }
         // GET API/Customers/1
-        public Customer GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
             {
             var customer = _dbContext.Customers.Single(c => c.Id == id);
             if(customer == null)
                 {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
                 }else
                 {
-                return customer;
+                return Ok(Mapper.Map<Customer,CustomerDto>(customer));
                 };
             }
         [HttpPost]
-        public Customer PostCustomer(Customer customer)
+        public IHttpActionResult PostCustomer(CustomerDto customerDto)
             {
             if (!ModelState.IsValid)
                 {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
                 }else
                 {
+                var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
                 _dbContext.Customers.Add(customer);
                 _dbContext.SaveChanges();
-                return (customer);
+                customerDto.Id = customer.Id;
+                return Created(new Uri(Request.RequestUri + "/" + customer.Id),customerDto);
                 }
 
             }
 
         // PUt API/Customers/1
         [HttpPut]
-        public void UpdateCustomer(int id,Customer customer)
+        public void UpdateCustomer(int id,CustomerDto customerDto)
             {
             if (!ModelState.IsValid)
                 {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
                 }
+
             var customerInDb = _dbContext.Customers.SingleOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            customerInDb.Name = customer.Name;
-            customerInDb.Birthdate = customer.Birthdate;
-            customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
-            customerInDb.MembershipTypeId = customer.MembershipTypeId;
+            Mapper.Map(customerInDb,customerDto);
             _dbContext.SaveChanges();
 
             }

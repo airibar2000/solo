@@ -94,4 +94,13 @@ C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall1.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall2.resources
 C:\solo\solo\solo\obj\Debug\solo.Migrations.actualizeall3.resources
+C:\solo\solo\solo\bin\System.Net.Http.Formatting.dll
+C:\solo\solo\solo\bin\System.Web.Http.dll
+C:\solo\solo\solo\bin\System.Web.Http.WebHost.dll
+C:\solo\solo\solo\bin\System.Net.Http.Formatting.xml
+C:\solo\solo\solo\bin\System.Web.Http.xml
+C:\solo\solo\solo\bin\System.Web.Http.WebHost.xml
+C:\solo\solo\solo\bin\AutoMapper.dll
+C:\solo\solo\solo\bin\AutoMapper.pdb
+C:\solo\solo\solo\bin\AutoMapper.xml
 C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache
