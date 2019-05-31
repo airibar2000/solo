@@ -7,11 +7,12 @@
         {
         <p> we dont have any customer yet.</p>
         }
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customer</th>
                 <th>Membership Type</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,8 @@
                 <td> @Html.ActionLink(@element.Name, "Edit", new { id = element.Id }, null)</td>
                  
                 <td>@element.MembershipType.Name</td>
+                <td><button data-customer-id="@element.Id" class="btn-link js-delete">Delete</button></td>
+
 
             </tr>
                 
@@ -34,4 +37,31 @@
 
 
         }
+@section scripts
+{
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+            $("#customers .js-delete").on("click", function () {
+                if (confirm("Confirm Deletion")) {
+                    $.ajax({
+                        url: "/api/customers/" + $(this).attr("data-customer-id"),
+                        method: "DELETE",
+                        success: function () {
+                            console.log("Deleting success")
+                        }
+                        
+
+                    });
+                }
+
+                //confirm("jqry working");
+            });
+            //confirm("jqry working");
+            });
+       
+
+
+    </script>
+    }
 

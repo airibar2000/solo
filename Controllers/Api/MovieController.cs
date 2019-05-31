@@ -28,12 +28,11 @@ namespace solo.Controllers.Api
             }
         public IHttpActionResult GetMovie(int id)
             {
-           var movie = _DbContext.Movies.Single(m => m.Id == id);
+            var movie = _DbContext.Movies.ToList().Single(m => m.Id == id);
             if (movie == null)
                 return NotFound();
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
-
-            }
+                        }
         [HttpPost]
         public IHttpActionResult PostMovie(MovieDto movieDto)
             {
@@ -50,5 +49,26 @@ namespace solo.Controllers.Api
                 return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
                 };
             }
+        [HttpPut]
+        public IHttpActionResult UpdateMovie(int id,MovieDto movieDto)
+            {
+            var movieInDb = _DbContext.Movies.Single(m => m.Id == id);
+            if (movieInDb == null)
+                return NotFound();
+            Mapper.Map(movieDto, movieInDb); 
+            _DbContext.SaveChanges();
+            return Ok();
+            }
+        [HttpDelete]
+        public IHttpActionResult DeleteMovie(int id)
+            {
+            var movie = _DbContext.Movies.Single(m => m.Id == id);
+            if (movie == null)
+                return NotFound();
+            _DbContext.Movies.Remove(movie);
+            _DbContext.SaveChanges();
+            return Ok();
+            }
+
         }
     }

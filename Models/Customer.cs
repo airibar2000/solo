@@ -16,7 +16,7 @@ namespace solo.Models
 
         
         [Display(Name = "Date of Birth")]
-        [Min18YearsIfaMember]
+        //[Min18YearsIfaMember] comment while using DTO
         public DateTime? Birthdate { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }

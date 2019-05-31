@@ -54,19 +54,19 @@ namespace solo.Controllers.Api
 
         // PUt API/Customers/1
         [HttpPut]
-        public void UpdateCustomer(int id,CustomerDto customerDto)
+        public IHttpActionResult UpdateCustomer(int id,CustomerDto customerDto)
             {
             if (!ModelState.IsValid)
                 {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
                 }
 
             var customerInDb = _dbContext.Customers.SingleOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            Mapper.Map(customerInDb,customerDto);
+            Mapper.Map(customerDto, customerInDb);
             _dbContext.SaveChanges();
-
+            return Ok();
             }
         // Delete /Api/customers/1
         [HttpDelete]
