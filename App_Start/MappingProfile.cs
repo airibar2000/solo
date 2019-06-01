@@ -13,10 +13,19 @@ namespace solo.App_Start
         public MappingProfile()
             {
 
+            // Domain to dto
+
             CreateMap<Customer, CustomerDto>();
-            CreateMap<CustomerDto, Customer>();
             CreateMap<Movie, MovieDto>();
-            CreateMap<MovieDto, Movie>();
+            CreateMap<MembershipType, MembershipDto>();
+
+            // Dto to Domain
+            CreateMap<CustomerDto, Customer>()
+                .ForMember(c=>c.Id,opt=>opt.Ignore());
+            
+            CreateMap<MovieDto, Movie>()
+                .ForMember(c => c.Id, opt => opt.Ignore()); 
+            
 
 
             }

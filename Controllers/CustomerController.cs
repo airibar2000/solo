@@ -38,11 +38,11 @@ namespace solo.Controllers
             
             return View(CustomerDetail);
             }
-        [Route("listofCustomer")]
+        //[Route("/customers")]
         public ViewResult Index()
             {
-            var customer = _myDb.Customers.Include(c => c.MembershipType).ToList();
-            return View(customer);
+            //var customer = _myDb.Customers.Include(c => c.MembershipType).ToList();
+            return View();
             }
 
         [Route("Customer/NewCustomer/{id}")]

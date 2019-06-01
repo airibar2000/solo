@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Data;
 using solo.Dtos;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace solo.Controllers.Api
 {
@@ -21,7 +22,10 @@ namespace solo.Controllers.Api
         // GET Api/customers
         public IEnumerable<CustomerDto> GetCustomers()
             {
-            return _dbContext.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return _dbContext.Customers
+                .Include(c=>c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
             }
         // GET API/Customers/1
         public IHttpActionResult GetCustomer(int id)
