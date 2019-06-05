@@ -1,5 +1,6 @@
 ﻿using solo.Models;
 using solo.ViewModels;
+using solo.Dtos;
 using System.Data.Entity;
 using System;
 using System.Collections.Generic;
@@ -34,11 +35,12 @@ namespace solo.Controllers
             }
 
         // GET: Movies/Random
-        [Route("movies")]
+        [Route("Movies")]
         public ActionResult Index()
             {
-            var movies = _myDb.Movies.Include(c => c.Genres).ToList();
-            return View(movies);
+            //var movies = _myDb.Movies.Include(c => c.Genres).ToList();
+            //return View(movies);
+            return View();
             }
 
 
@@ -68,7 +70,7 @@ namespace solo.Controllers
         public ActionResult Detail(int id)
             {
 
-            var MovieDetail = _myDb.Movies.Include(c => c.Genres).SingleOrDefault(c => c.Id == id);
+            var MovieDetail = _myDb.Movies.Include(c => c.Genres.GenreId).SingleOrDefault(c => c.Id == id);
             var MovieDetailWithGenre = new MoviesWithGener
                 {
                 Id = MovieDetail.Id,

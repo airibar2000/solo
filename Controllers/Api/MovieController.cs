@@ -6,8 +6,10 @@ using System.Net.Http;
 using System.Web.Http;
 using solo.Models;
 using System.Data;
+using System.Data.Entity;
 using solo.Dtos;
 using AutoMapper;
+
 
 namespace solo.Controllers.Api
     {
@@ -23,9 +25,15 @@ namespace solo.Controllers.Api
         // GET api/<controller>
         [HttpGet]
         public IEnumerable<MovieDto> GetMovies()
-            {
-            return _DbContext.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
-            }
+              {
+
+            var movies =   _DbContext.Movies
+                .Include(m => m.Genres)
+                .ToList()
+                .Select(Mapper.Map<Movie,MovieDto>);
+
+            return movies;
+                        }
         public IHttpActionResult GetMovie(int id)
             {
             var movie = _DbContext.Movies.ToList().Single(m => m.Id == id);

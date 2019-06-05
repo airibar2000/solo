@@ -26,9 +26,12 @@ namespace solo.Dtos
         [Range(1, 20, ErrorMessage = "Field Number in Stock must be between 1 and 20")]
         public short NumberInStock { get; set; }
 
-        public Genres Genres { get; set; }
+        public GenresDto Genres { get; set; }
 
         [Display(Name = "Genre Type")]
         public byte GenreId { get; set; }
+
+        
+
         }
     }

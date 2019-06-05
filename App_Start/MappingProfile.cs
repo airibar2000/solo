@@ -18,14 +18,17 @@ namespace solo.App_Start
             CreateMap<Customer, CustomerDto>();
             CreateMap<Movie, MovieDto>();
             CreateMap<MembershipType, MembershipDto>();
+            CreateMap<Genres, GenresDto>();
 
             // Dto to Domain
             CreateMap<CustomerDto, Customer>()
                 .ForMember(c=>c.Id,opt=>opt.Ignore());
             
             CreateMap<MovieDto, Movie>()
-                .ForMember(c => c.Id, opt => opt.Ignore()); 
-            
+                .ForMember(m => m.Id, opt => opt.Ignore());
+
+            CreateMap<GenresDto, Genres>()
+               .ForMember(g => g.GenreId, opt => opt.Ignore());
 
 
             }

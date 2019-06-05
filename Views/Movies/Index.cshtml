@@ -1,36 +1,59 @@
 ﻿@model IEnumerable<solo.Models.Movie>
 <h1>Movies View</h1>
 
-@{
-    if (!Model.Any())
-        {
-        <p> we dont have any Movies yet.</p>
-            }
-        }
-    <table class="table table-bordered table-hover">
-        <thead>
+
+<table id="movies" class="table table-bordered table-hover">
+    <thead>
         <tr>
             <th>
                 @Html.ActionLink("New Movie", "NewMovie", "Movies", new { }, new { @class = "btn btn-primary" })
             </th>
         </tr>
+        <tr>
+            <th>Movies</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach (var element in Model)
+            {
             <tr>
-                <th>Movies</th>
-                <th>Genre</th>
+                <td>@Html.ActionLink(@element.Name, "Detail", new { id = element.Id }, null)</td>
+
+                <td>@element.Genres.GenreName</td>
+
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var element in Model)
+
+
+            }*@
+    </tbody>
+
+</table>
+@section scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $("#movies").DataTable({
+                ajax: {
+                    url: "/api/movie",
+                    dataSrc: ""
+                },
+                columns: [
                 {
-                <tr>
-                    <td>@Html.ActionLink(@element.Name, "Detail", new { id = element.Id }, null)</td>
+                    data: "name"
+                },
+                {
+                    data: "genres.genreName"
+                    }
+                ]
 
-                    <td>@element.Genres.GenreName</td>
 
-                </tr>
+            })
 
 
-                }
-        </tbody>
+        });
 
-    </table>
+
+
+    </script>
+}
