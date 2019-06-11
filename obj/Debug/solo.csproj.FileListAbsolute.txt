@@ -103,3 +103,4 @@ C:\solo\solo\solo\bin\System.Web.Http.WebHost.xml
 C:\solo\solo\solo\bin\AutoMapper.dll
 C:\solo\solo\solo\bin\AutoMapper.pdb
 C:\solo\solo\solo\bin\AutoMapper.xml
+C:\solo\solo\solo\obj\Debug\solo.csprojAssemblyReference.cache

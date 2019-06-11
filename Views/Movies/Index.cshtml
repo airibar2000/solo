@@ -12,20 +12,11 @@
         <tr>
             <th>Movies</th>
             <th>Genre</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @*@foreach (var element in Model)
-            {
-            <tr>
-                <td>@Html.ActionLink(@element.Name, "Detail", new { id = element.Id }, null)</td>
-
-                <td>@element.Genres.GenreName</td>
-
-            </tr>
-
-
-            }*@
+        
     </tbody>
 
 </table>
@@ -39,12 +30,24 @@
                     dataSrc: ""
                 },
                 columns: [
-                {
-                    data: "name"
-                },
-                {
-                    data: "genres.genreName"
+                    {
+                        data: "name",
+                        render: function (data, type, movies) {
+                            return "<a href='/editmovie/" + movies.id + "'>" + movies.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "genres.genreName"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>"
+
+                            // confirmation of deletion of the movie
+                        }
                     }
+                    
                 ]
 
 
@@ -52,6 +55,32 @@
 
 
         });
+        //agregation
+        $("#movies").on("click",".js-delete", function () {
+                            var button = $(this);
+                bootbox.confirm("Confirm to Delete Movie", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/movie/" + button.attr("data-movie-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parent('tr')).remove().draw();
+                                //table.row(button.parent("tr")).remove().draw();
+                                
+                            }
+
+
+                        })
+                    }
+                
+                })
+                
+
+                //confirm("jqry working");
+            });
+            //confirm("jqry working");
+        
+        // end agregation
 
 
 

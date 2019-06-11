@@ -36,7 +36,7 @@ namespace solo.Controllers.Api
                         }
         public IHttpActionResult GetMovie(int id)
             {
-            var movie = _DbContext.Movies.ToList().Single(m => m.Id == id);
+            var movie = _DbContext.Movies.Include(m=>m.Genres).ToList().Single(m => m.Id == id);
             if (movie == null)
                 return NotFound();
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
