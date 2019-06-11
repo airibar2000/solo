@@ -23,11 +23,11 @@
     <script type="text/javascript">
         
         $(document).ready(function () {
-           var table = $("#customers").DataTable({
-               ajax: {
+            var table = $("#customers").DataTable({
+                ajax: {
                     url: "/api/customers",
                     dataSrc: ""
-                      },
+                },
                 columns: [
                     {
                         data: "name",
@@ -46,8 +46,10 @@
                     }
                 ]
             });
-            $("#customers").on("click",".js-delete", function () {
-                            var button = $(this);
+
+
+            $("#customers").on("click", ".js-delete", function () {
+                var button = $(this);
                 bootbox.confirm("Confirm to Delete Customer", function (result) {
                     if (result) {
                         $.ajax({
@@ -55,22 +57,22 @@
                             method: "DELETE",
                             success: function () {
 
-                                table.row(button.parent("tr")).remove().draw();
-                                
+                                table.row(button.parents("tr")).remove().draw();
+
                             }
 
 
                         });
                     }
-                
+
                 });
-                
+
 
                 //confirm("jqry working");
-            });
+            })
             //confirm("jqry working");
-         });
-       
+        });
+        
 
 
      </script>

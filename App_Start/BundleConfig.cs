@@ -13,7 +13,7 @@ namespace solo
                         "~/Scripts/bootstrap.js",
                       "~/Scripts/bootbox.js",
                       "~/Scripts/DataTables/jquery.dataTables.js",
-                      "~/Scripts/datatables/datatables.bootstrap.js"
+                      "~/Scripts/DataTables/dataTables.bootstrap.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,7 +27,7 @@ namespace solo
            
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
-                       "~/Content/datatables/css/datatables.bootstrap.css",
+                       "~/Content/DataTables/css/DataTables.bootstrap.css",
                       "~/Content/site.css"
                      
                       ));

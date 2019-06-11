@@ -54,26 +54,26 @@
             })
 
 
-        });
+        
         //agregation
         $("#movies").on("click",".js-delete", function () {
                             var button = $(this);
-                bootbox.confirm("Confirm to Delete Movie", function (result) {
-                    if (result) {
-                        $.ajax({
-                            url: "/api/movie/" + button.attr("data-movie-id"),
-                            method: "DELETE",
-                            success: function () {
-                                table.row(button.parent('tr')).remove().draw();
-                                //table.row(button.parent("tr")).remove().draw();
-                                
-                            }
+            bootbox.confirm("Confirm to Delete Movie", function (result) {
+                if (result) {
+                    $.ajax({
+                        url: "/api/movie/" + button.attr("data-movie-id"),
+                        method: "DELETE",
+                        success: function () {
+                           
+                            table.row(button.parents("tr")).remove().draw();
+
+                        }
 
 
-                        })
-                    }
-                
-                })
+                    })
+                }
+
+            });
                 
 
                 //confirm("jqry working");
@@ -82,7 +82,7 @@
         
         // end agregation
 
-
+            });
 
     </script>
 }
