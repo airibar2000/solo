@@ -45,28 +45,27 @@ namespace solo.Controllers
             return View();
             }
 
-        [Route("Customer/NewCustomer/{id}")]
-        public ActionResult NewCustomer(Customer customer) {
-
+        [Route("Customer/NewCustomer")]
+        public ActionResult NewCustomer() {
             var membershiptype = _myDb.MembershipTypes.ToList();
             var newCustomer = new CustomerExtras
                 {
-                MembershipTypes = membershiptype
+               MembershipTypes = membershiptype
                 };
             return View(newCustomer);
             }
             [HttpPost]
             public ActionResult Save(Customer customer)
             {
-            if(customer.Id == null || customer.Id == 0)
-                {
-
-                }
+            //if(customer.Id == 0)
+            //    {
+            //    customer.Id = 0;
+            //    }
             if (!ModelState.IsValid)
                 {
                 var viewModel = new CustomerExtras
                     {
-                    Customer = customer,
+                    //Customer = customer,
                     MembershipTypes = _myDb.MembershipTypes.ToList()
                     };
                 return View("NewCustomer",viewModel);
@@ -79,7 +78,7 @@ namespace solo.Controllers
                 {
                 var customerInDb = _myDb.Customers.Single(c => c.Id == customer.Id);
                 customerInDb.Name = customer.Name;
-                customer.Birthdate = customer.Birthdate;
+                customerInDb.Birthdate = customer.Birthdate;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
 
@@ -94,9 +93,9 @@ namespace solo.Controllers
             var customer = _myDb.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
                 return HttpNotFound();
-            var viewModel = new CustomerExtras
+            var viewModel = new CustomerExtras(customer)
                 {
-                Customer = customer,
+                //Customer = customer,
                 MembershipTypes = _myDb.MembershipTypes.ToList()
                 };
             return View("NewCustomer", viewModel);

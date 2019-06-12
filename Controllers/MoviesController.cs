@@ -39,9 +39,9 @@ namespace solo.Controllers
         [Route("Movies")]
         public ActionResult Index()
             {
-            //var movies = _myDb.Movies.Include(c => c.Genres).ToList();
-            //return View(movies);
-            return View();
+            var movies = _myDb.Movies.Include(c => c.Genres).ToList();
+            return View(movies);
+           // return View();
             }
         // delete movie
         [Route("DeleteMovie/{id}")]
@@ -53,15 +53,16 @@ namespace solo.Controllers
         // end delete movie
 
 
-        [Route("EditMovie/{id}")]
-        public ActionResult Detail(int id)
-            {
-            var idToEdit = id;
-            var movie = _myDb.Movies.Single(m => m.Id == id);
+        //[Route("EditMovie/{id}")]
+        ////public ActionResult Detail(int id)
+        //public ActionResult NewMovie(Movie movie)
+        //    {
+        //    var idToEdit = id;
+        //    var movie = _myDb.Movies.Single(m => m.Id == id);
            
-            //return Content("id: " + id);
-            return View();
-            }
+        //    //return Content("id: " + id);
+        //    return View();
+        //    }
         //Get : Movies
         public ActionResult Index(int? pageIndex, string sortBy)
             {
@@ -78,41 +79,46 @@ namespace solo.Controllers
             return Content(String.Format("Page Index: {0} and Sort by {1}", pageIndex, sortBy));
             }
 
-        //[Route("Movies/Detail/{id}")]
-        //public ActionResult Detail(int id)
-        //    {
+        [Route("Movies/Detail/{id}")]
+        public ActionResult Detail(int id)
+            {
 
-        //    var MovieDetail = _myDb.Movies.Include(c => c.Genres.GenreId).SingleOrDefault(c => c.Id == id);
-        //    var MovieDetailWithGenre = new MoviesWithGener
-        //        {
-        //        Id = MovieDetail.Id,
-        //        Name = MovieDetail.Name,
-        //        ReleaseDate = MovieDetail.ReleaseDate,
-        //        GenreId = MovieDetail.GenreId,
-        //        NumberInStock = MovieDetail.NumberInStock,
-
-
-        //        Genres = _myDb.Genres.ToList()
+            var MovieDetail = _myDb.Movies.SingleOrDefault(c => c.Id == id);
+            var MovieDetailWithGenre = new MoviesWithGener(MovieDetail)
+                {
+                Id = MovieDetail.Id,
+                Name = MovieDetail.Name,
+                ReleaseDate = MovieDetail.ReleaseDate,
+                GenreId = MovieDetail.GenreId,
+                NumberInStock = MovieDetail.NumberInStock,
+                Genres = _myDb.Genres.ToList()
 
 
-        //      };
-        //    if (MovieDetail == null)
-        //        {
-        //        return HttpNotFound();
-        //        }
-        //    ViewBag.MovieAction = "Edit Movie";
-        //    return View("NewMovie", MovieDetailWithGenre);
-        //    }
+              };
+            if (MovieDetail == null)
+                {
+                return HttpNotFound();
+                }
+            ViewBag.MovieAction = "Edit Movie";
+            return View("NewMovie", MovieDetailWithGenre);
+            }
 
         [Route("Movies/newmovie")]
         public ActionResult NewMovie(Movie movie)
             {
+            if (movie == null) {
+                ViewBag.MovieAction = "New Movie";
+                }
+            else
+                {
+                ViewBag.MovieAction = "Edit Movie";
+                }
             var listOfgenre = _myDb.Genres.ToList();
             var Movieall = new MoviesWithGener(movie)
                 {
                     Genres = listOfgenre
                 };
-            ViewBag.MovieAction = "New Movie";
+            
             return View(Movieall);
 
             }

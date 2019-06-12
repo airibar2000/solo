@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201905241900026_actualizeall3.Designer.cs">
       <DependentUpon>201905241900026_actualizeall3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906121507362_actualizeall4.cs" />
+    <Compile Include="Migrations\201906121507362_actualizeall4.Designer.cs">
+      <DependentUpon>201906121507362_actualizeall4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genres.cs" />
@@ -576,6 +580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905241900026_actualizeall3.resx">
       <DependentUpon>201905241900026_actualizeall3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906121507362_actualizeall4.resx">
+      <DependentUpon>201906121507362_actualizeall4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

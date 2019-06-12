@@ -9,6 +9,7 @@ namespace solo.Dtos
     {
     public class CustomerDto
         {
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(255)]
