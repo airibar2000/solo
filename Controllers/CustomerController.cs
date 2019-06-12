@@ -46,7 +46,7 @@ namespace solo.Controllers
             }
 
         [Route("Customer/NewCustomer/{id}")]
-        public ActionResult NewCustomer() {
+        public ActionResult NewCustomer(Customer customer) {
 
             var membershiptype = _myDb.MembershipTypes.ToList();
             var newCustomer = new CustomerExtras
@@ -58,6 +58,10 @@ namespace solo.Controllers
             [HttpPost]
             public ActionResult Save(Customer customer)
             {
+            if(customer.Id == null || customer.Id == 0)
+                {
+
+                }
             if (!ModelState.IsValid)
                 {
                 var viewModel = new CustomerExtras

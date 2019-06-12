@@ -6,6 +6,11 @@
     <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
+                <th>
+                    @Html.ActionLink("New Customer", "NewCustomer", "Customer", new { }, new { @class = "btn btn-primary" })
+                </th>
+            </tr>
+            <tr>
                 <th>Customer</th>
                 <th>Membership Type</th>
                 <th>Delete</th>
